@@ -22,9 +22,18 @@ app.use(session({
 
 app.use( checkSession);
 
-app.post('/api/auth/login', (req, res, next) =>{
-    
+app.get('/api/getMenu', (req, res, next) =>{
+    app.get('db').getMenu()
+    .then(response =>{
+        res.status(200).json(response);
+    }).catch(err =>{
+        res.status(500).json(err);
+    })
 })
+
+// app.post('/api/auth/login', (req, res, next) =>{
+//     const { session } = req.
+// })
 
 // app.get('/api/test', (req, res) =>{
 //     res.status(200).json({message: 'Success'});

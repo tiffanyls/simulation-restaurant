@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Authview from './components/authview/authview';
+import routes from './routes';
+
 
 class App extends Component {
   render() {
@@ -9,7 +10,7 @@ class App extends Component {
         <header className="App-header">
         </header>
         <div>
-          <Authview />
+       {routes}
         </div>
 
       </div>

@@ -6,7 +6,7 @@ import browsingview from './components/browsingview/browsingview';
 
 export default (
     <Switch>
-        <Route path='/' component={authview} />
-        <Route path='browsingview' component={browsingview} />
+        <Route exact path='/' component={authview} />
+        <Route path='/browsingview' component={browsingview} />
     </Switch>
-)
+);
