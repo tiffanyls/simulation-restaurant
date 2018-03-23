@@ -23,6 +23,7 @@ class browsingview extends Component{
             Cart</div>
             <section className = 'menu'>
                 Menu
+             {this.state.menu}
             </section>
             </div>
         )

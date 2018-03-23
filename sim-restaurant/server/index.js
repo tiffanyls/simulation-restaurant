@@ -20,9 +20,10 @@ app.use(session({
     saveUnintialized: false,
 }));
 
-app.use( checkSession);
+app.use(checkSession);
 
 app.get('/api/getMenu', (req, res, next) =>{
+    const {menu} = req.body;
     app.get('db').getMenu()
     .then(response =>{
         res.status(200).json(response);
