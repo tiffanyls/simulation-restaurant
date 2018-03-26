@@ -11,19 +11,27 @@ const port = 3001;
 
 const app = express();
 
+
 app.use(json());
 app.use(cors());
+massive(process.env.CONNECTION_STRING).then(db=> {
+            app.set('db', db);
+            console.log(db, "in massive")
+}).catch(console.log);
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUnintialized: false,
-}));
+    saveUninitialized: false,
+    }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(checkSession);
 
 app.get('/api/getMenu', (req, res, next) =>{
-    const {menu} = req.body;
+    console.log(app.get('db'), `""sdfjkshdkfhrs`)
     app.get('db').getMenu()
     .then(response =>{
         res.status(200).json(response);

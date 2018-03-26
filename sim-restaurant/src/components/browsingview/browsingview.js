@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-class browsingview extends Component{
+class Browsingview extends Component{
     constructor(){
         super();
         this.state = {
@@ -9,25 +9,25 @@ class browsingview extends Component{
         };
     }
         componentDidMount(){
-            axios.get('/api/getMenu').then(response =>{
-                console.log(response)
-                this.setState({menu: response.data});
-            })
+            axios.get('/api/getMenu').then(resp =>  this.setState({menu: resp.data}))
         }
     
 
     render(){
+        const {menu} = this.state;
+        const menuItems = menu.map((curr, i) =>{
+           return <h1 key={i}>{curr.item}</h1>
+        })
         return(
             <div>
-            <div className = 'sidebar'>Menu
-            Cart</div>
+            <div className = 'sidebar'>Menu Cart</div>
             <section className = 'menu'>
-                Menu
-             {this.state.menu}
+               <h1> Menu</h1>
+             {menuItems}
             </section>
             </div>
         )
     }
 }
 
-export default browsingview;
+export default Browsingview;
